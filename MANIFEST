@@ -26,6 +26,8 @@ t/02function/01plan/05cv-skip.t
 t/02function/01plan/06die.t
 t/02function/01plan/07planfirst-ok.t
 t/02function/01plan/08planfirst-skip.t
+t/02function/01plan/09example-skip.t
+t/02function/01plan/10exampletm-skip.t
 t/02function/02need_module/01ok.t
 t/02function/02need_module/02skip.t
 t/02function/02need_module/03multi-ok.t

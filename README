@@ -56,18 +56,18 @@ it takes an optional final argument that is used to decide whether
 the plan should occur or not.  that is
 
   use Test::Plan;
-
-  plan tests => 3, sub { $^O eq 'MSWin32' };
-
+                                                                                                                             
+  plan tests => 3, sub { $^O ne 'MSWin32' };
+                                                                                                                             
 has the same results as
-
+                                                                                                                             
   use Test::More;
-
-  if ( $^O eq 'MSWin32' ) {
-    plan skip_all;
+                                                                                                                             
+  if ( $^O ne 'MSWin32' ) {
+    plan tests => 3;
   }
   else {
-    plan tests => 3;
+    plan 'skip_all';
   }
 
 much better, eh?  here is what you need to know...

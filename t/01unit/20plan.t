@@ -51,8 +51,8 @@ use_ok ($class);
       "skipping due to cv returning false");
 
   is ($args[1],
-      'no reason given',
-      'default reason passed with skip_all');
+      '',
+      'no reason passed to skip_all');
 }
 
 {
@@ -115,8 +115,8 @@ use_ok ($class);
       "skipping due to false boolean");
 
   is ($args[1],
-      'no reason given',
-      'default reason passed with false boolean');
+      '',
+      'no reason passed with false boolean');
 }
 
 {

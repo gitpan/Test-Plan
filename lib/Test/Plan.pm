@@ -13,7 +13,7 @@ use vars qw(@ISA @EXPORT @EXPORT_OK $VERSION @SkipReasons);
 
 @ISA = qw(Exporter);
 
-$VERSION = 0.01;
+$VERSION = 0.02;
 
 @EXPORT = qw(need
              plan
@@ -86,7 +86,7 @@ sub plan {
 
     unless ($meets_condition) {
       my $reason = join ', ',
-        @SkipReasons ? @SkipReasons : "no reason given";
+        @SkipReasons ? @SkipReasons : '';
 
       @SkipReasons = ();  # reset
 
@@ -349,17 +349,17 @@ the plan should occur or not.  that is
 
   use Test::Plan;
 
-  plan tests => 3, sub { $^O eq 'MSWin32' };
+  plan tests => 3, sub { $^O ne 'MSWin32' };
 
 has the same results as
 
   use Test::More;
 
-  if ( $^O eq 'MSWin32' ) {
-    plan skip_all;
+  if ( $^O ne 'MSWin32' ) {
+    plan tests => 3;
   }
   else {
-    plan tests => 3;
+    plan 'skip_all';
   }
 
 much better, eh?  here is what you need to know...
