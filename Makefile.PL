@@ -5,13 +5,12 @@ use warnings FATAL => qw(all);
 
 use ExtUtils::MakeMaker;
 use File::Find qw(find);
-use File::Spec ();
 
 my %directories;
-                                                                                                                             
-find(sub { return unless m/\.t$/; $directories{$File::Find::dir} = 1 }, 't');
-                                                                                                                             
-my @tests = map { File::Spec->catfile($_, '*.t') } keys %directories;
+
+find(sub { return unless m/\.t$/; $directories{$File::Find::name} = 1 }, 't');
+
+my @tests = sort keys %directories;
                                                                                                                              
 WriteMakefile(
   NAME         => 'Test::Plan',

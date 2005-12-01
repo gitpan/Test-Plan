@@ -13,7 +13,7 @@ use vars qw(@ISA @EXPORT @EXPORT_OK $VERSION @SkipReasons);
 
 @ISA = qw(Exporter);
 
-$VERSION = 0.02;
+$VERSION = 0.03;
 
 @EXPORT = qw(need
              plan
@@ -549,7 +549,7 @@ returns true if perl contains PerlIO extensions.
 this is a direct interface into the skip reason mechanism C<Test::Plan>
 uses behind the scenes.
 
-  plan tests => 3, skip_reason('I haven't implemented this feature yet');
+  plan tests => 3, skip_reason("I haven't implemented this feature yet");
 
 while it is useful for one liners, you can also use it from your own
 custom subroutine

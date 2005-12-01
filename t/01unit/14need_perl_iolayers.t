@@ -27,8 +27,11 @@ use Config;
 
 {
   no warnings qw(redefine);
+  # the STORE warning appears mandatory in later perls
+  local $^W = 0;
   local *Config::STORE = sub { $_[0]->{$_[1]} = $_[2]; };
-  local $Config{extensions};
+  local *Config::Config;
+  $Config{extensions} = undef;
 
   my $found = need_perl_iolayers();
 
@@ -38,8 +41,11 @@ use Config;
 
 {
   no warnings qw(redefine);
+  # the STORE warning appears mandatory in later perls
+  local $^W = 0;
   local *Config::STORE = sub { $_[0]->{$_[1]} = $_[2]; };
-  local $Config{extensions} = 'PerlIO/scalar';
+  local *Config::Config;
+  $Config{extensions} = 'PerlIO/scalar';
 
   my $found = need_perl_iolayers();
 
